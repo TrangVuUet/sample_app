@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def create #POST method
-  	@user = User.new(user_params)
+  	@user = User.new(user_params) #ko du params -> thieu + gay ra loi
   	if @user.save
       log_in @user
       flash[:success] = "Welcome to the Sample App!"
