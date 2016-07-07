@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:edit, :update, :index]
   before_action :correct_user, only: [:edit, :update]
 
   def new #GET method
@@ -25,6 +25,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+  end
+
+  def index
+
+    # Bad idea to retrieve all users at once
+    @users = User.all
   end
 
   def update
