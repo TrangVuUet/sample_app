@@ -30,7 +30,6 @@ class UsersController < ApplicationController
   end
 
   def index
-
     @users = User.paginate(page: params[:page])
   end
 
@@ -52,7 +51,6 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-
   private
 
   	def user_params
@@ -64,6 +62,7 @@ class UsersController < ApplicationController
     # Dam bao logged-in user 
     def logged_in_user
       unless logged_in?
+    end
 
 
     # Dam bao logged-in user 
@@ -88,5 +87,5 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
-
+  end
 end
