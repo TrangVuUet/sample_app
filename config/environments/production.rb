@@ -74,7 +74,7 @@ Rails.application.configure do
         enable_starttls_auto: true,
         user_name: "quangduyx188@gmail.com",
         password: "quangduY93",
-        domain: "localhost"
+        domain: "heroku.com"
     }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
