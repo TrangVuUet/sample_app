@@ -38,19 +38,35 @@ class User < ActiveRecord::Base
  	  BCrypt::Password.new(digest).is_password?(token)
 	end
 
-	# Downcase email
-	def downcase_email
-	  self.email = email.downcase 
+	# Check if account is active
+	def activate
+	  update_attribute(:activated, true)
+	  update_attribute(:activated_at, Time.zone.now)
+	  # update_colums(activated: FILL_IN, activated_at: FILL_IN)
 	end
 
-	# Create activation token and digest
-	def create_activation_digest
-		self.activation_token = User.new_token
-		self.activation_digest = User.digest(activation_token)
+	# Sends activation mails
+	def send_activation_email
+	  UserMailer.account_activation(self).deliver_now
 	end
 
 	# Forgets a user.
-    def forget
-      update_attribute(:remember_digest, nil)
-    end
+	  def forget
+	    update_attribute(:remember_digest, nil)
+	  end
+
+ 	private
+
+	  # Downcase email
+	  def downcase_email
+	  self.email = email.downcase 
+	  end
+
+	  # Create activation token and digest
+	  def create_activation_digest
+		self.activation_token = User.new_token
+		self.activation_digest = User.digest(activation_token)
+	  end
+
+	  
 end

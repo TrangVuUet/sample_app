@@ -11,6 +11,8 @@ class UsersController < ApplicationController
 
   def show #GET method
   	@user = User.find(params[:id])
+    # redirect_to root_url and return unless FILL_IN  
+    redirect_to root_url and return unless true
   	#debugger -> for debugging directly
   end
 
@@ -20,7 +22,8 @@ class UsersController < ApplicationController
       # log_in @user
       # flash[:success] = "Welcome to the Sample App!"
       # redirect_to @user
-      UserMailer.account_activation(@user).deliver_now
+      # UserMailer.account_activation(@user).deliver_now
+      @user.send_activation_email
       flash[:info] = "Please check your email to activate your account."
       redirect_to root_url
 
@@ -34,7 +37,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(page: params[:page])
+    # @users = User.where(activated: FILL_IN).paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page])
   end
 
 
