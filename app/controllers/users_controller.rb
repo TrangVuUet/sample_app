@@ -11,9 +11,10 @@ class UsersController < ApplicationController
 
   def show #GET method
   	@user = User.find(params[:id])
-    # redirect_to root_url and return unless FILL_IN  
-    redirect_to root_url and return unless true
-  	#debugger -> for debugging directly
+    @microposts = @user.microposts.paginate(page: params[:page])
+    # redirect_to root_url and return unless FILL_IN
+    # redirect_to root_url and return unless true
+  	# debugger -> for debugging directly
   end
 
   def create #POST method
@@ -65,24 +66,6 @@ class UsersController < ApplicationController
   		params.require(:user).permit(:name, :email, :password, :password_confirmation)
   	end
 
-    # Define filters
-
-    # Dam bao logged-in user 
-    def logged_in_user
-      unless logged_in?
-    end
-
-
-    # Dam bao logged-in user 
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
-
-
     # Confirm the correct user
     def correct_user
       @user = User.find(params[:id])
@@ -95,5 +78,5 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
-  end
+  #end
 end
