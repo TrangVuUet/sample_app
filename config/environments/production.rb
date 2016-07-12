@@ -66,7 +66,7 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.delivery_method = :smtp
-  host = "localhost:3000"
+  host = "https://sample-trang.herokuapp.com"
   config.action_mailer.default_url_options = {host: host}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
