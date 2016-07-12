@@ -6,6 +6,9 @@ gem 'rails', '4.2.2'
 gem 'bcrypt', '3.1.7'
 # Gem for fake users
 gem 'faker', '1.6.3'
+gem 'carrierwave',             '0.11.2'
+gem 'mini_magick',             '4.5.1'
+gem 'fog',                     '1.38.0'
 # Gem for padding
 gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
