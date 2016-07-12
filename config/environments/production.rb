@@ -63,19 +63,11 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+  # Raises error for missing translations
+  # config.action_view.raise_on_missing_translations = true
   config.action_mailer.delivery_method = :smtp
-  host = 'sample-trang.herokuapp.com'
-  config.action_mailer.default_url_options = { host: host }
-  config.action_view.raise_on_missing_translations = true
-  ActionMailer::Base.smtp_settings = {
-        address: "smtp.gmail.com",
-        port: "587",
-        authentication: :plain,
-        enable_starttls_auto: true,
-        user_name: "quangduyx188@gmail.com",
-        password: "quangduY93",
-        domain: "heroku.com"
-    }
+  host = "localhost:3000"
+  config.action_mailer.default_url_options = {host: host}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
