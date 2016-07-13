@@ -34,7 +34,9 @@ module SampleApp
       :password => "trangvu1912",
       :authentication => :plain,
       :enable_starttls_auto => true
-  }
+    }
+    # Include the authenticity token in remote forms.
+    config.action_view.embed_authenticity_token_in_remote_forms = true
 
   end
 end
